@@ -1,0 +1,87 @@
+/* ============================================
+   LAYOUT 1: Holy Grail
+   Grid por áreas (Layouts CSS)
+   Mobile First (CSS Avanzado)
+   ============================================ */
+
+.layout1 {
+  --columns: 1fr;
+  --areas:
+    "header"
+    "article"
+    "nav"
+    "aside"
+    "footer";
+  --gap: 0.5rem;
+
+  display: grid;
+  grid-template-columns: var(--columns);
+  grid-template-areas: var(--areas);
+  gap: var(--gap);
+  min-height: 400px;
+
+  /* Desktop (CSS Avanzado - sintaxis moderna) */
+  @media (width > 768px) {
+    --columns: 120px 1fr 120px;
+    --rows: auto 1fr auto;
+
+    grid-template-rows: var(--rows);
+    --areas:
+      "header  header  header"
+      "nav     article aside"
+      "footer  footer  footer";
+  }
+}
+
+/* Colores Layout 1 */
+.l1-header  { grid-area: header;  background: #0078d4; color: var(--text-light) }
+.l1-nav     { grid-area: nav;     background: #0096d6; color: var(--text-light) }
+.l1-article { grid-area: article; background: #c0c0c0; color: var(--text-dark); min-height: 200px }
+.l1-aside   { grid-area: aside;   background: #0096d6; color: var(--text-light) }
+.l1-footer  { grid-area: footer;  background: #005a9e; color: var(--text-light) }
+
+
+/* ============================================
+   LAYOUT 2: Fixture SA
+   Grid por áreas (Layouts CSS)
+   Desktop: A chico, B grande, C D E misma fila
+   ============================================ */
+
+.layout2 {
+  --columns: 1fr 1fr;
+  --areas:
+    "titulo titulo"
+    "b      b"
+    "c      d"
+    "e      e";
+  --gap: 0.5rem;
+
+  display: grid;
+  grid-template-columns: var(--columns);
+  grid-template-areas: var(--areas);
+  gap: var(--gap);
+
+  /* Desktop (CSS Avanzado - sintaxis moderna) */
+  @media (width > 768px) {
+    --columns: 1fr 1fr 1fr;
+    --areas:
+      "titulo titulo titulo"
+      "a      b      b"
+      "c      d      e";
+  }
+}
+
+/* Colores Layout 2 */
+.l2-titulo { grid-area: titulo; background: #f0f0f0; color: var(--text-dark); font-size: 1.5rem; border: var(--border) }
+.l2-a      { grid-area: a;      background: #e8e8e8; color: var(--text-dark); border: var(--border); min-height: 120px }
+.l2-b      { grid-area: b;      background: #e8e8e8; color: var(--text-dark); border: var(--border); min-height: 120px }
+.l2-c      { grid-area: c;      background: #e8e8e8; color: var(--text-dark); border: var(--border); min-height: 80px }
+.l2-d      { grid-area: d;      background: #e8e8e8; color: var(--text-dark); border: var(--border); min-height: 80px }
+.l2-e      { grid-area: e;      background: #e8e8e8; color: var(--text-dark); border: var(--border); min-height: 80px }
+
+/* Mobile: A no aparece en el wireframe móvil */
+.l2-a {
+  @media (width <= 768px) {
+    display: none;
+  }
+}
